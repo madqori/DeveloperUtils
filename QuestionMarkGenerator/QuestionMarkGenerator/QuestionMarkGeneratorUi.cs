@@ -12,19 +12,56 @@ namespace QuestionMarkGenerator
 {
     public partial class QuestionMarkGeneratorUi : Form
     {
+        private string selectedType = "";
         public QuestionMarkGeneratorUi()
         {
             InitializeComponent();
+            InitObject();
+            HideAndShowPanel();
+        }
+
+        private void HideAndShowPanel()
+        {
+            pageLineCode.Show();
+            pageSplitByComma.Show();
+            if (selectedType.ToUpper() == Type.LINE_CODE.ToUpper())
+                pageSplitByComma.Hide();
+            else if (selectedType.ToUpper() == Type.SPLIT_BY_COMMA.ToUpper())
+                pageLineCode.Hide();
+        }
+
+        private void InitObject()
+        {
+            cboType.Items.Add(Type.LINE_CODE);
+            cboType.Items.Add(Type.SPLIT_BY_COMMA);
+            cboType.SelectedIndex = 0;
+        }
+
+        private static class Type
+        {
+            public const string LINE_CODE = "Line Code";
+            public const string SPLIT_BY_COMMA = "Split by Comma";
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             try
             {
-                int fromLine = TryParseInt(txtLineFrom.Text);
-                int toLine = TryParseInt(txtLineTo.Text);
-                ValidateData(fromLine, toLine);
-                txtOutput.Text = GenerateParamQuestionMark(fromLine, toLine);
+                string type = cboType.SelectedItem.ToString();
+
+                if(type.ToUpper() == Type.LINE_CODE.ToUpper())
+                {
+                    int fromLine = TryParseInt(txtLineFrom.Text);
+                    int toLine = TryParseInt(txtLineTo.Text);
+                    int totalQuestionmark = toLine - fromLine + 1;
+                    ValidateData(fromLine, toLine);
+                    txtOutput.Text = GenerateParamQuestionMark(totalQuestionmark);
+                }
+                else if(type.ToUpper() == Type.SPLIT_BY_COMMA.ToUpper())
+                {
+                    int totalQuestionMark = txtSplitByComma.Text.Split(',').Count();
+                    txtOutput.Text = GenerateParamQuestionMark(totalQuestionMark);
+                }
             }
             catch (Exception ex)
             {
@@ -38,14 +75,13 @@ namespace QuestionMarkGenerator
                 throw new Exception("FromLine must be lower than toLine");
         }
 
-        private string GenerateParamQuestionMark(int fromLine, int toLine)
+        private string GenerateParamQuestionMark(int totalQuestionMark)
         {
             string output = "(";
-            int range = toLine - fromLine;
-            for (int i = 0; i < range; i++)
+            for (int i = 0; i < totalQuestionMark; i++)
             {
                 output += "?";
-                if (i + 1 == range)
+                if (i + 1 == totalQuestionMark)
                     output += ")";
                 else
                     output += ",";
@@ -118,10 +154,34 @@ namespace QuestionMarkGenerator
             {
                 ValidateTypeNumberOnly(sender, e);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cboType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ComboBox cmb = (ComboBox)sender;
+                object selectedItem = cmb.SelectedItem;
+                selectedType = selectedItem.ToString();
+                HideAndShowPanel();
+                ClearUI();
+                }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void ClearUI()
+        {
+            txtLineFrom.Text = "";
+            txtLineTo.Text = "";
+            txtSplitByComma.Text = "";
+            txtOutput.Text = "";
         }
     }
 }
