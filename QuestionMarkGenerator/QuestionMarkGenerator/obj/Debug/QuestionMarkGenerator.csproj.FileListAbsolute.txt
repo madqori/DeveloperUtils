@@ -1,0 +1,10 @@
+C:\DeveloperUtils\QuestionMarkGenerator\QuestionMarkGenerator\bin\Debug\QuestionMarkGenerator.exe.config
+C:\DeveloperUtils\QuestionMarkGenerator\QuestionMarkGenerator\bin\Debug\QuestionMarkGenerator.exe
+C:\DeveloperUtils\QuestionMarkGenerator\QuestionMarkGenerator\bin\Debug\QuestionMarkGenerator.pdb
+C:\DeveloperUtils\QuestionMarkGenerator\QuestionMarkGenerator\obj\Debug\QuestionMarkGenerator.csprojResolveAssemblyReference.cache
+C:\DeveloperUtils\QuestionMarkGenerator\QuestionMarkGenerator\obj\Debug\QuestionMarkGenerator.QuestionMarkGeneratorUi.resources
+C:\DeveloperUtils\QuestionMarkGenerator\QuestionMarkGenerator\obj\Debug\QuestionMarkGenerator.Properties.Resources.resources
+C:\DeveloperUtils\QuestionMarkGenerator\QuestionMarkGenerator\obj\Debug\QuestionMarkGenerator.csproj.GenerateResource.Cache
+C:\DeveloperUtils\QuestionMarkGenerator\QuestionMarkGenerator\obj\Debug\QuestionMarkGenerator.csproj.CoreCompileInputs.cache
+C:\DeveloperUtils\QuestionMarkGenerator\QuestionMarkGenerator\obj\Debug\QuestionMarkGenerator.exe
+C:\DeveloperUtils\QuestionMarkGenerator\QuestionMarkGenerator\obj\Debug\QuestionMarkGenerator.pdb
