@@ -42,7 +42,7 @@ namespace QuestionMarkGenerator
             this.txtLineFrom = new System.Windows.Forms.TextBox();
             this.Panel_SplitByComma = new System.Windows.Forms.Panel();
             this.lblColumn = new System.Windows.Forms.Label();
-            this.txtSplitByComma = new System.Windows.Forms.TextBox();
+            this.txtSplitByComma = new System.Windows.Forms.RichTextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.pageLineCode = new System.Windows.Forms.TabPage();
             this.pageSplitByComma = new System.Windows.Forms.TabPage();
@@ -227,7 +227,7 @@ namespace QuestionMarkGenerator
         private System.Windows.Forms.Panel Panel_LineCode;
         private System.Windows.Forms.Panel Panel_SplitByComma;
         private System.Windows.Forms.Label lblColumn;
-        private System.Windows.Forms.TextBox txtSplitByComma;
+        private System.Windows.Forms.RichTextBox txtSplitByComma;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtLineTo;
