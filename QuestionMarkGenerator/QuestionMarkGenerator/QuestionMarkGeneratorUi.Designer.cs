@@ -46,6 +46,8 @@ namespace QuestionMarkGenerator
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.pageLineCode = new System.Windows.Forms.TabPage();
             this.pageSplitByComma = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtClassData = new System.Windows.Forms.TextBox();
             this.Panel_LineCode.SuspendLayout();
             this.Panel_SplitByComma.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -55,9 +57,9 @@ namespace QuestionMarkGenerator
             // 
             // txtOutput
             // 
-            this.txtOutput.Location = new System.Drawing.Point(15, 76);
+            this.txtOutput.Location = new System.Drawing.Point(15, 102);
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(322, 108);
+            this.txtOutput.Size = new System.Drawing.Size(344, 146);
             this.txtOutput.TabIndex = 4;
             this.txtOutput.Text = "";
             // 
@@ -158,6 +160,7 @@ namespace QuestionMarkGenerator
             this.txtSplitByComma.Name = "txtSplitByComma";
             this.txtSplitByComma.Size = new System.Drawing.Size(265, 20);
             this.txtSplitByComma.TabIndex = 0;
+            this.txtSplitByComma.Text = "";
             // 
             // tabControl1
             // 
@@ -195,11 +198,29 @@ namespace QuestionMarkGenerator
             this.pageSplitByComma.Text = "tabPage2";
             this.pageSplitByComma.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 74);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Class Data";
+            // 
+            // txtClassData
+            // 
+            this.txtClassData.Location = new System.Drawing.Point(83, 71);
+            this.txtClassData.Name = "txtClassData";
+            this.txtClassData.Size = new System.Drawing.Size(100, 20);
+            this.txtClassData.TabIndex = 8;
+            // 
             // QuestionMarkGeneratorUi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 196);
+            this.ClientSize = new System.Drawing.Size(365, 254);
+            this.Controls.Add(this.txtClassData);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.cboType);
             this.Controls.Add(this.btnClear);
@@ -216,6 +237,7 @@ namespace QuestionMarkGenerator
             this.pageLineCode.ResumeLayout(false);
             this.pageSplitByComma.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -235,6 +257,8 @@ namespace QuestionMarkGenerator
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage pageLineCode;
         private System.Windows.Forms.TabPage pageSplitByComma;
+        private Label label3;
+        private TextBox txtClassData;
     }
 }
 

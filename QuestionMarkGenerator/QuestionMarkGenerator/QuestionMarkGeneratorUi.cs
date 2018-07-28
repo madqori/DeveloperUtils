@@ -49,24 +49,52 @@ namespace QuestionMarkGenerator
             {
                 string type = cboType.SelectedItem.ToString();
 
-                if(type.ToUpper() == Type.LINE_CODE.ToUpper())
+                if (type.ToUpper() == Type.LINE_CODE.ToUpper())
                 {
                     int fromLine = TryParseInt(txtLineFrom.Text);
                     int toLine = TryParseInt(txtLineTo.Text);
                     int totalQuestionmark = toLine - fromLine + 1;
+                    
                     ValidateData(fromLine, toLine);
                     txtOutput.Text = GenerateParamQuestionMark(totalQuestionmark);
+
                 }
-                else if(type.ToUpper() == Type.SPLIT_BY_COMMA.ToUpper())
+                else if (type.ToUpper() == Type.SPLIT_BY_COMMA.ToUpper())
                 {
                     int totalQuestionMark = txtSplitByComma.Text.Split(',').Count();
-                    txtOutput.Text = GenerateParamQuestionMark(totalQuestionMark);
+                    string szClassDataName = txtClassData.Text;
+
+                    if (string.IsNullOrEmpty(txtClassData.Text))
+                        txtOutput.Text = GenerateParamQuestionMark(totalQuestionMark);
+                    else
+                        txtOutput.Text = GenerateParamQuestionMarkWithClassData(szClassDataName, totalQuestionMark);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private string GenerateParamQuestionMarkWithClassData(string szClassDataName, int totalQuestionMark)
+        {
+            List<string> listField = txtSplitByComma.Text.Split(',').ToList();
+
+            string output = "VALUES (";
+            for (int i = 0; i < totalQuestionMark; i++)
+            {
+                output += "?";
+                if (i + 1 == totalQuestionMark)
+                    output += ")\";";
+                else
+                    output += ",";
+            }
+            foreach (var field in listField)
+            {
+                output += " \n cmd.Parameters.AddWithValue(\""+field.Trim()+"\"," + szClassDataName + "." + field.Trim() + ");";
+            }
+
+            return output;
         }
 
         private void ValidateData(int fromLine, int toLine)
@@ -113,6 +141,8 @@ namespace QuestionMarkGenerator
                 txtLineFrom.Text = "";
                 txtLineTo.Text = "";
                 txtOutput.Text = "";
+                txtSplitByComma.Text = "";
+                txtClassData.Text = "";
             }
             catch (Exception ex)
             {
@@ -169,8 +199,8 @@ namespace QuestionMarkGenerator
                 selectedType = selectedItem.ToString();
                 HideAndShowPanel();
                 ClearUI();
-                }
-            catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
