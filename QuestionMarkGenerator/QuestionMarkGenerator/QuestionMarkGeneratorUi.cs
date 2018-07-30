@@ -93,6 +93,7 @@ namespace QuestionMarkGenerator
             {
                 output += " \n cmd.Parameters.AddWithValue(\""+field.Trim()+"\"," + szClassDataName + "." + field.Trim() + ");";
             }
+            output += "\n cmd.ExecuteNonQuery();";
 
             return output;
         }
